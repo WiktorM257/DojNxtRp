@@ -1,0 +1,182 @@
+/* ========== COMPONENTS - DOJ GRANATOWA PALETA ========== */
+
+:root {
+    --primary: #1a3a5c;           /* Ciemny granat - tło */
+    --dark: #162e51;              /* GŁÓWNY kolor */
+    --dark-brown: #ffffff;        /* Bardzo ciemny granat - kafelki */
+    --light: #ffffff;             /* Biały */
+    --text-dark: #ffffff;         /* Ciemny tekst */
+    --accent: #C9A227;            /* Złoto */
+    --transition-fast: 160ms;
+    --transition-medium: 300ms;
+    --text-scale: 1.06;
+}
+
+html {
+    transition: background var(--transition-fast) ease, color var(--transition-fast) ease;
+    font-size: calc(16px * var(--text-scale));
+}
+
+/* ========== BUTTONS ========== */
+
+.btn {
+    padding: .9rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .3s;
+    cursor: pointer;
+    border: none;
+    font-size: .95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--light);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201, 162, 39, .5);
+    background: #d4af37;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+}
+
+.btn-outline:hover {
+    background: var(--text-dark);
+    color: var(--light);
+}
+
+.btn-small {
+    padding: .6rem 1.2rem;
+    font-size: .85rem;
+    border-radius: 8px;
+}
+
+.btn-doc {
+    background: rgba(255, 255, 255, .1);
+    color: var(--light);
+    border: 1.5px solid rgba(255, 255, 255, .3);
+    font-weight: 500;
+    padding: .55rem 1.3rem;
+    font-size: .88rem;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+}
+
+.btn-doc:hover {
+    background: rgba(255, 255, 255, .2);
+    border-color: rgba(255, 255, 255, .5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+}
+
+/* ========== DOC CARDS - CIEMNE GRANATOWE ========== */
+
+.docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.doc-card {
+    background: linear-gradient(145deg, rgba(22, 46, 81, 0.95), rgba(15, 31, 56, 0.98));
+    border: 1px solid rgba(201, 162, 39, .4);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all .4s;
+    position: relative;
+    overflow: hidden;
+    color: var(--light);
+}
+
+/* Żółte ikonki w dokumentach */
+.doc-card i {
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.doc-card h3 {
+    color: var(--light);
+    margin-bottom: 0.8rem;
+}
+
+.doc-card p {
+    color: rgba(255, 255, 255, .8);
+    line-height: 1.6;
+}
+
+.doc-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px rgba(201, 162, 39, .3);
+    transform: translateY(-5px);
+}
+
+.doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201, 162, 39, .2), transparent);
+    transition: left .5s;
+}
+
+.doc-card:hover::before {
+    left: 100%;
+}
+
+/* Aktywny link w nawigacji */
+.nav-links a.active,
+.nav-links a[aria-current="page"] {
+    color: var(--accent);
+    font-weight: 700;
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: -999px;
+    background: var(--accent);
+    color: var(--light);
+    padding: .5rem .75rem;
+    border-radius: 6px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+/* Typografia */
+body {
+    font-size: calc(1rem * var(--text-scale));
+    line-height: 1.6;
+}
+
+h1 { font-size: calc(2.25rem * var(--text-scale)); color: var(--light); }
+h2 { font-size: calc(1.75rem * var(--text-scale)); color: var(--light); }
+h3 { font-size: calc(1.25rem * var(--text-scale)); color: var(--light); }
+h4 { font-size: calc(1rem * var(--text-scale)); color: var(--light); }
+
+p, li, a, .btn, .doc-meta, .trial-info-value {
+    font-size: calc(1rem * var(--text-scale));
+}
