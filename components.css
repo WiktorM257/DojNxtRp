@@ -1,20 +1,25 @@
-/* ========== COMPONENTS - DOJ GRANATOWA PALETA ========== */
+/* ========== DOJ – GRANATOWA PALETA ========== */
 
 :root {
-    --primary: #1a3a5c;           /* Ciemny granat - tło */
-    --dark: #162e51;              /* GŁÓWNY kolor */
-    --dark-brown: #ffffff;        /* Bardzo ciemny granat - kafelki */
-    --light: #ffffff;             /* Biały */
-    --text-dark: #ffffff;         /* Ciemny tekst */
-    --accent: #C9A227;            /* Złoto */
+    --primary: #1a3a5c;
+    --dark: #162e51;
+    --light: #ffffff;
+    --text-dark: #ffffff;
+    --accent: #C9A227;
     --transition-fast: 160ms;
     --transition-medium: 300ms;
     --text-scale: 1.06;
 }
 
 html {
-    transition: background var(--transition-fast) ease, color var(--transition-fast) ease;
     font-size: calc(16px * var(--text-scale));
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+body {
+    font-size: calc(1rem * var(--text-scale));
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* ========== BUTTONS ========== */
@@ -32,56 +37,29 @@ html {
     align-items: center;
     gap: .5rem;
     font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    letter-spacing: 0.3px;
-}
-
-.btn-primary {
-    background: var(--accent);
-    color: var(--light);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(201, 162, 39, .5);
-    background: #d4af37;
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--text-dark);
-    border: 2px solid var(--text-dark);
-}
-
-.btn-outline:hover {
-    background: var(--text-dark);
-    color: var(--light);
 }
 
 .btn-small {
     padding: .6rem 1.2rem;
     font-size: .85rem;
-    border-radius: 8px;
 }
 
 .btn-doc {
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255,255,255,.12);
     color: var(--light);
-    border: 1.5px solid rgba(255, 255, 255, .3);
-    font-weight: 500;
-    padding: .55rem 1.3rem;
-    font-size: .88rem;
+    border: 1.5px solid rgba(255,255,255,.35);
     backdrop-filter: blur(10px);
-    letter-spacing: 0.5px;
+    letter-spacing: .4px;
 }
 
 .btn-doc:hover {
-    background: rgba(255, 255, 255, .2);
-    border-color: rgba(255, 255, 255, .5);
+    background: rgba(255,255,255,.22);
+    border-color: rgba(255,255,255,.6);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+    box-shadow: 0 6px 14px rgba(0,0,0,.35);
 }
 
-/* ========== DOC CARDS - CIEMNE GRANATOWE ========== */
+/* ========== GRID DOKUMENTÓW ========== */
 
 .docs-grid {
     display: grid;
@@ -89,67 +67,43 @@ html {
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
+    align-items: stretch; /* KLUCZ */
 }
 
+/* ========== KARTA DOKUMENTU ========== */
+
 .doc-card {
-    background: linear-gradient(145deg, rgba(22, 46, 81, 0.95), rgba(15, 31, 56, 0.98));
-    border: 1px solid rgba(201, 162, 39, .4);
+    background: linear-gradient(145deg, rgba(22,46,81,.95), rgba(15,31,56,.98));
+    border: 1px solid rgba(201,162,39,.45);
     border-radius: 16px;
     padding: 1.5rem;
-    transition: all .4s;
+    color: var(--light);
     position: relative;
     overflow: hidden;
-    color: var(--light);
-}
 
-/* Żółte ikonki w dokumentach */
-.doc-card i {
-    color: var(--accent);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.doc-card h3 {
-    color: var(--light);
-    margin-bottom: 0.8rem;
-}
-
-.doc-card {
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: all .4s;
 }
-
-.doc-card p {
-    color: rgba(255, 255, 255, .8);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-}
-
-.doc-footer {
-    margin-top: auto;               /* KLUCZ DO RÓWNEJ LINII */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-
 
 .doc-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 15px 40px rgba(201, 162, 39, .3);
     transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px rgba(201,162,39,.3);
 }
 
 .doc-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    inset: 0;
     left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(201, 162, 39, .2), transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(201,162,39,.2),
+        transparent
+    );
     transition: left .5s;
 }
 
@@ -157,44 +111,80 @@ html {
     left: 100%;
 }
 
-/* Aktywny link w nawigacji */
-.nav-links a.active,
-.nav-links a[aria-current="page"] {
+/* ========== HEADER ========== */
+
+.doc-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: .75rem;
+}
+
+.doc-icon i {
     color: var(--accent);
-    font-weight: 700;
-    box-shadow: inset 0 -3px 0 var(--accent);
+    font-size: 2rem;
 }
 
-/* Skip link */
-.skip-link {
-    position: absolute;
-    left: -999px;
-    top: -999px;
-    background: var(--accent);
-    color: var(--light);
-    padding: .5rem .75rem;
-    border-radius: 6px;
-    z-index: 1000;
+.doc-info h3 {
+    margin: 0 0 .35rem;
+    font-size: 1.2rem;
 }
 
-.skip-link:focus {
-    left: 1rem;
-    top: 1rem;
+.doc-info span {
+    font-size: .85rem;
+    opacity: .75;
 }
 
-/* Typografia */
-body {
-    font-size: calc(1rem * var(--text-scale));
+/* ========== OPIS ========== */
+
+.doc-card p {
+    color: rgba(255,255,255,.85);
     line-height: 1.6;
+    margin-bottom: 1.2rem;
+
+    /* OPCJONALNIE – równa wysokość opisów */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-h1 { font-size: calc(2.25rem * var(--text-scale)); color: var(--light); }
-h2 { font-size: calc(1.75rem * var(--text-scale)); color: var(--light); }
-h3 { font-size: calc(1.25rem * var(--text-scale)); color: var(--light); }
-h4 { font-size: calc(1rem * var(--text-scale)); color: var(--light); }
+/* ========== FOOTER – PRZYCISK ZAWSZE NA DOLE ========== */
 
-p, li, a, .btn, .doc-meta, .trial-info-value {
-    font-size: calc(1rem * var(--text-scale));
-
+.doc-footer {
+    margin-top: auto;              /* NAJWAŻNIEJSZE */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
+.doc-meta {
+    font-size: .8rem;
+    opacity: .7;
+}
+
+/* ========== TYPOGRAFIA ========== */
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+
+p, a, li, .btn {
+    font-size: 1rem;
+}
+
+/* ========== RESPONSYWNOŚĆ ========== */
+
+@media (max-width: 600px) {
+    .doc-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-doc {
+        justify-content: center;
+        width: 100%;
+    }
+}
