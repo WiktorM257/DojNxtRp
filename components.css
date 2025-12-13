@@ -1,4 +1,4 @@
-/* ========== DOJ – GRANATOWA PALETA ========== */
+/* ========== DOJ – PALETA ========== */
 
 :root {
     --primary: #1a3a5c;
@@ -13,30 +13,40 @@
 
 html {
     font-size: calc(16px * var(--text-scale));
-    transition: background var(--transition-fast), color var(--transition-fast);
 }
 
 body {
-    font-size: calc(1rem * var(--text-scale));
-    line-height: 1.6;
     margin: 0;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    color: var(--light);
+    line-height: 1.6;
 }
 
-/* ========== BUTTONS ========== */
+/* ========== BUTTONS – STYL BAZOWY (BEZ ZMIAN) ========== */
 
 .btn {
     padding: .9rem 1.8rem;
     border-radius: 8px;
     font-weight: 500;
     text-decoration: none;
-    transition: all .3s;
     cursor: pointer;
     border: none;
     font-size: .95rem;
     display: inline-flex;
     align-items: center;
     gap: .5rem;
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    transition: all .3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--light);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
 }
 
 .btn-small {
@@ -44,19 +54,39 @@ body {
     font-size: .85rem;
 }
 
+/* przycisk dokumentów – styl bazowy */
 .btn-doc {
     background: rgba(255,255,255,.12);
     color: var(--light);
     border: 1.5px solid rgba(255,255,255,.35);
     backdrop-filter: blur(10px);
-    letter-spacing: .4px;
 }
 
-.btn-doc:hover {
-    background: rgba(255,255,255,.22);
-    border-color: rgba(255,255,255,.6);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,.35);
+/* ========== HERO – LAYOUT (BEZ ZMIAN STYLU) ========== */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-buttons .btn-hero {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+}
+
+/* mobile hero */
+@media (max-width: 600px) {
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn-hero {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* ========== GRID DOKUMENTÓW ========== */
@@ -65,9 +95,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: stretch; /* KLUCZ */
+    align-items: stretch;
 }
 
 /* ========== KARTA DOKUMENTU ========== */
@@ -77,91 +105,46 @@ body {
     border: 1px solid rgba(201,162,39,.45);
     border-radius: 16px;
     padding: 1.5rem;
-    color: var(--light);
-    position: relative;
-    overflow: hidden;
-
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: all .4s;
 }
-
-.doc-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 15px 40px rgba(201,162,39,.3);
-}
-
-.doc-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    left: -100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(201,162,39,.2),
-        transparent
-    );
-    transition: left .5s;
-}
-
-.doc-card:hover::before {
-    left: 100%;
-}
-
-/* ========== HEADER ========== */
-
-.doc-header {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-bottom: .75rem;
-}
-
-.doc-icon i {
-    color: var(--accent);
-    font-size: 2rem;
-}
-
-.doc-info h3 {
-    margin: 0 0 .35rem;
-    font-size: 1.2rem;
-}
-
-.doc-info span {
-    font-size: .85rem;
-    opacity: .75;
-}
-
-/* ========== OPIS ========== */
 
 .doc-card p {
     color: rgba(255,255,255,.85);
-    line-height: 1.6;
     margin-bottom: 1.2rem;
-
-    /* OPCJONALNIE – równa wysokość opisów */
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
-/* ========== FOOTER – PRZYCISK ZAWSZE NA DOLE ========== */
-
+/* stopka zawsze na dole */
 .doc-footer {
-    margin-top: auto;              /* NAJWAŻNIEJSZE */
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
 }
 
-.doc-meta {
-    font-size: .8rem;
-    opacity: .7;
+/* ========== HOVER – TYLKO DOKUMENTY, BEZ WPŁYWU NA KARTY ========== */
+
+.doc-card .btn-doc {
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+.doc-card .btn-doc:hover {
+    background-color: rgba(201, 162, 39, 0.18);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201, 162, 39, 0.35);
+}
+
+/* zabezpieczenie – dokumenty nie wpływają na hero */
+.doc-card .btn {
+    flex: 0 0 auto;
+    width: auto;
 }
 
 /* ========== TYPOGRAFIA ========== */
@@ -175,16 +158,107 @@ p, a, li, .btn {
     font-size: 1rem;
 }
 
-/* ========== RESPONSYWNOŚĆ ========== */
 
-@media (max-width: 600px) {
-    .doc-footer {
-        flex-direction: column;
-        align-items: stretch;
-    }
+/* =====================================================
+   DOKUMENTY – NOWY WYGLĄD KART (JAK NA 2. ZDJĘCIU)
+   ===================================================== */
 
-    .btn-doc {
-        justify-content: center;
-        width: 100%;
-    }
+.documents {
+    background: #1f3f63;
+    padding: 4rem 1rem;
+}
+
+/* GRID */
+.documents .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* KARTA */
+.documents .doc-card {
+    background: linear-gradient(
+        180deg,
+        rgba(18, 38, 63, 0.95),
+        rgba(13, 29, 50, 0.98)
+    );
+    border-radius: 18px;
+    padding: 2rem 1.8rem;
+    border: 1px solid rgba(201, 162, 39, 0.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+/* hover KARTY (nie przycisku!) */
+.documents .doc-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 25px 60px rgba(0,0,0,.45);
+}
+
+/* HEADER */
+.documents .doc-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+/* IKONA */
+.documents .doc-icon i {
+    color: var(--accent);
+    font-size: 1.8rem;
+}
+
+/* TYTUŁ */
+.documents .doc-info h3 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 0 0 .3rem;
+    color: #ffffff;
+}
+
+/* WERSJA */
+.documents .doc-info span {
+    font-size: .85rem;
+    opacity: .75;
+}
+
+/* OPIS – KRÓTSZY (… jak na screenie) */
+.documents .doc-card p {
+    font-size: .95rem;
+    color: rgba(255,255,255,.85);
+    line-height: 1.55;
+    margin: .6rem 0 1.4rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* STOPKA */
+.documents .doc-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* DATA */
+.documents .doc-meta {
+    font-size: .85rem;
+    opacity: .8;
+}
+
+/* PRZYCISK – TEN SAM CO WCZEŚNIEJ */
+.documents .btn-doc {
+    background: rgba(255,255,255,.12);
+    border: 1.5px solid rgba(255,255,255,.35);
+    color: #fff;
 }

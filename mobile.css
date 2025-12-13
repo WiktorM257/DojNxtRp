@@ -32,3 +32,101 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =====================================================
+   DOKUMENTY – WYGLĄD JAK NA 2. ZDJĘCIU (FORCE OVERRIDE)
+   Wklej na sam koniec OSTATNIEGO CSS (np. mobile.css)
+   ===================================================== */
+
+.documents {
+    background: #1f3f63 !important;
+    padding: 4rem 1rem !important;
+}
+
+.documents .docs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 2rem !important;
+    align-items: stretch !important;
+}
+
+.documents .doc-card {
+    background: linear-gradient(
+        180deg,
+        rgba(18, 38, 63, 0.95),
+        rgba(13, 29, 50, 0.98)
+    ) !important;
+
+    border-radius: 18px !important;
+    padding: 2rem 1.8rem !important;
+    border: 1px solid rgba(201, 162, 39, 0.35) !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35) !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+.documents .doc-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 25px 60px rgba(0,0,0,.45) !important;
+}
+
+.documents .doc-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    margin-bottom: 1.2rem !important;
+}
+
+.documents .doc-icon i {
+    color: var(--accent) !important;
+    font-size: 1.8rem !important;
+}
+
+.documents .doc-info h3 {
+    font-size: 1.2rem !important;
+    line-height: 1.35 !important;
+    margin: 0 0 .3rem !important;
+    color: #fff !important;
+}
+
+.documents .doc-info span {
+    font-size: .85rem !important;
+    opacity: .75 !important;
+}
+
+.documents .doc-card p {
+    font-size: .95rem !important;
+    color: rgba(255,255,255,.85) !important;
+    line-height: 1.55 !important;
+    margin: .6rem 0 1.4rem !important;
+
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+
+.documents .doc-footer {
+    margin-top: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.documents .doc-meta {
+    font-size: .85rem !important;
+    opacity: .8 !important;
+}
+
+.documents .btn-doc {
+    background: rgba(255,255,255,.12) !important;
+    border: 1.5px solid rgba(255,255,255,.35) !important;
+    color: #fff !important;
+}
