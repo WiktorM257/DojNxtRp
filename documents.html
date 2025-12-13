@@ -28,19 +28,29 @@
     <div class="overlay" id="overlay"></div>
 
     <nav id="navbar" role="navigation" aria-label="Główna nawigacja">
-        <div class="nav-container">
-            <a href="index.html#home" class="logo"><i class="fas fa-balance-scale"></i> DOJ</a>
-            <ul class="nav-links">
-                <li><a href="index.html#home">Strona Główna</a></li>
-                <li><a href="about.html">O Nas</a></li>
-                <li><a href="documents.html">Dokumenty</a></li>
-                <li><a href="index.html#recruitment">Rekrutacja</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <i class="fas fa-balance-scale"></i> DOJ
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Strona Główna</a></li>
+
+            <li class="has-submenu">
+                    Struktura <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="rada.html">Rada Departamentu</a></li>
+                 <li><a href="hierarchy.html">Hierarchia służbowa</a></li>
+                </ul>
+            </li>
+
+            <li><a href="documents.html">Dokumenty</a></li>
+            <li><a href="recruitment.html">Rekrutacja</a></li>
+        </ul>
+    </div>
+</nav>
+
 
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="index.html#home">Strona Główna</a>
@@ -210,12 +220,15 @@
                 <h4>Department of Justice</h4>
                 <p>Oficjalny strona Departamentu Sprawiedlowości w Los Santos <br> NXTRP 2.0</p>
             </div>
-            <div class="footer-section">
-                <h4>Szybkie linki</h4>
-                <a href="index.html#home">Strona główna</a>
-                <a href="documents.html">Dokumenty</a>
-                <a href="about.html">O Nas</a>
-            </div>
+        <div class="footer-section">
+     <h4>Szybkie linki</h4>
+        <a href="index.html">Strona główna</a>
+        <a href="documents.html">Dokumenty</a>
+         <a href="rada.html">Rada Departamentu</a>
+        <a href="hierarchy.html">Hierarchia służbowa</a>
+        <a href="recruitment.html">Rekrutacja</a>
+</div>
+
             <div class="footer-section">
                 <h4>Kontakt</h4>
                     <a href="https://discord.gg/rDNfymcqYW" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Aplikacja Departamentu </a>

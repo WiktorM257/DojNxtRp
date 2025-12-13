@@ -237,7 +237,6 @@ p, a, li, .btn {
     margin: .6rem 0 1.4rem;
 
     display: -webkit-box;
-    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -261,4 +260,134 @@ p, a, li, .btn {
     background: rgba(255,255,255,.12);
     border: 1.5px solid rgba(255,255,255,.35);
     color: #fff;
+}
+
+/* SUBMENU DOJ */
+
+.nav-links li {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #162e51;
+    border-radius: 8px;
+    padding: 10px 0;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    z-index: 1000;
+}
+
+.has-submenu:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.submenu li a:hover {
+    background: rgba(255,255,255,.08);
+}
+
+/* ikonka strzałki */
+.has-submenu > a i {
+    font-size: 0.75em;
+    margin-left: 6px;
+}
+.nav-links,
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-section {
+    max-width: 1200px;
+    margin: 140px auto;
+    padding: 0 20px;
+    color: white;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.image-wrapper img {
+    max-width: 120%;
+    border-radius: 14px;
+}
+
+/* ================================
+   DOJ – HIERARCHY PROFILE
+   ================================ */
+
+.doj-profile {
+    background-color: #162e51;
+    padding: 100px 0;
+    color: #ffffff;
+}
+
+.doj-profile-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+/* LEWA STRONA – ZDJĘCIE */
+.doj-profile-left img {
+    width: 360px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* PRAWA STRONA – TEKST */
+.doj-profile-right {
+    flex: 1;
+}
+
+.doj-rank {
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9fb6d9;
+    font-weight: 600;
+}
+
+.doj-name {
+    margin: 0 0 30px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.doj-profile-right p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 900px) {
+    .doj-profile-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .doj-profile-left img {
+        width: 260px;
+    }
 }
