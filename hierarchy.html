@@ -15,8 +15,6 @@
 </head>
 <body>
 
-<a class="skip-link" href="#maincontent">Przejdź do treści</a>
-
 <nav id="navbar" role="navigation" aria-label="Główna nawigacja">
     <div class="nav-container">
         <a href="index.html" class="logo">
@@ -27,6 +25,7 @@
             <li><a href="index.html">Strona Główna</a></li>
 
             <li class="has-submenu">
+                <a href="#">
                     Struktura <i class="fas fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
@@ -39,7 +38,23 @@
             <li><a href="recruitment.html">Rekrutacja</a></li>
         </ul>
     </div>
+    
+    <!-- DODAJ TEN PRZYCISK -->
+    <button id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html">Strona Główna</a>
+    <a href="rada.html">Rada Departamentu</a>
+    <a href="hierarchy.html">Hierarchia służbowa</a>
+    <a href="documents.html">Dokumenty</a>
+    <a href="recruitment.html">Rekrutacja</a>
+</div>
+
 
 <main id="maincontent">
     <section class="page-section">
@@ -81,6 +96,58 @@
         <p>&copy; 2025 NXTRP 2.0 - DOJ. Wszelkie prawa zastrzeżone.</p>
     </div>
 </footer>
+
+<script>
+    (function() {
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const current = location.pathname.split('/').pop() || 'index.html';
+        navLinks.forEach(a => {
+            const href = a.getAttribute('href');
+            if (href === current) {
+                a.classList.add('active');
+                a.setAttribute('aria-current', 'page');
+            }
+        });
+
+        document.querySelectorAll('.btn-doc').forEach(btn => {
+            if (!btn.hasAttribute('aria-label')) {
+                btn.setAttribute('aria-label', btn.textContent.trim());
+            }
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (hamburger && mobileMenu) {
+            hamburger.setAttribute('aria-expanded', 'false');
+            
+            hamburger.addEventListener('click', () => {
+                const open = mobileMenu.classList.toggle('open');
+                hamburger.classList.toggle('open', open);
+                hamburger.setAttribute('aria-expanded', String(open));
+                mobileMenu.setAttribute('aria-hidden', String(!open));
+            });
+            
+            mobileMenu.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    hamburger.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                });
+            });
+            
+            document.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                    hamburger.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
+    })();
+</script>
 
 <script src="core.js"></script>
 </body>

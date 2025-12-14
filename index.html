@@ -21,27 +21,22 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#maincontent">Przejdź do treści</a>
-
-    <div class="loader">
-        <div class="loader-icon"></div>
-    </div>
-    <div class="overlay" id="overlay"></div>
     <nav id="navbar" role="navigation" aria-label="Główna nawigacja">
     <div class="nav-container">
-        <a href="#home" class="logo">
+        <a href="index.html" class="logo">
             <i class="fas fa-balance-scale"></i> DOJ
         </a>
 
         <ul class="nav-links">
-            <li><a href="#home">Strona Główna</a></li>
+            <li><a href="index.html">Strona Główna</a></li>
 
             <li class="has-submenu">
+                <a href="#">
                     Struktura <i class="fas fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
                     <li><a href="rada.html">Rada Departamentu</a></li>
-                 <li><a href="hierarchy.html">Hierarchia służbowa</a></li>
+                    <li><a href="hierarchy.html">Hierarchia służbowa</a></li>
                 </ul>
             </li>
 
@@ -49,15 +44,21 @@
             <li><a href="recruitment.html">Rekrutacja</a></li>
         </ul>
     </div>
+    
+    <!-- DODAJ TEN PRZYCISK -->
+    <button id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </nav>
-
-
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="#home">Strona Główna</a>
-        <a href="about.html">Struktura</a>
-        <a href="documents.html">Dokumenty</a>
-        <a href="recruitment.html">Rekrutacja</a>
-    </div>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html">Strona Główna</a>
+    <a href="rada.html">Rada Departamentu</a>
+    <a href="hierarchy.html">Hierarchia służbowa</a>
+    <a href="documents.html">Dokumenty</a>
+    <a href="recruitment.html">Rekrutacja</a>
+</div>
 
     <a id="maincontent" tabindex="-1"></a>
 
@@ -67,7 +68,7 @@
             <h1>Department of Justice</h1>
             <p>Stoimy na straży prawa i sprawiedliwości w Los Santos. Profesjonalizm, uczciwość i dedykacja to nasze fundamenty.</p>
             <div class="hero-buttons">
-        <a href="recruitment.html" class="btn btn-primary btn-hero">
+        <a href="#recruitment" class="btn btn-primary btn-hero">
         <i class="fas fa-user-plus"></i> Dołącz do nas
         </a>
             <a href="#documents" class="btn btn-outline btn-hero">
